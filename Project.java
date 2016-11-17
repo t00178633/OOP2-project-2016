@@ -17,4 +17,8 @@ public class Project extends JFrame implements ActionListener
 		mainmenu.setVisible(true);
 		
 	}
-}
+	
+	public Project()
+	{
+
+    }
