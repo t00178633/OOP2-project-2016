@@ -29,11 +29,13 @@ public class Project extends JFrame implements ActionListener
 	{ 
 		
 		JLabel opening;
+        Container mainbackground;
         
 		setTitle("Garage Repairs");
 		setSize(300,500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		Container mainbackground = getmainbackground();
+		
+	    mainbackground = getmainbackground();
         mainbackground.setBackground (Color.gray);
         mainbackground.setLayout(null);
         
@@ -53,9 +55,26 @@ public class Project extends JFrame implements ActionListener
         opening = new JLabel("Hello, Welcome to Garage Repairs.");
         opening.setSize(250, 50); 
         mainbackground.add(opening);
+        
+        opening = new JLabel("Hello" );
+        opening.setSize(250, 50);
+        mainbackground.add(opening);
 	}
 	
-	    public void createCustomer() {
+	 public void actionPerformed(ActionEvent event) {
+        String  menu;
+        JLabel opening;
+        menu = event.getActionCommand();
+        if (menu.equals("Exit")) {
+           System.exit(0);
+        }
+        
+        else {
+        	 opening.setText( menu );
+        }
+        }
+	
+	    public void createCustomers() {
         JMenuItem Customer;
         
         Customer = new JMenu("Customers");
@@ -72,10 +91,9 @@ public class Project extends JFrame implements ActionListener
         Customer.addActionListener( this );
         Customer.add(Customer);
 
-        Customer = new JMenuItem("Quit");      
+        Customer = new JMenuItem("Exit");      
         Customer.addActionListener( this );
         Customer.add(Customer);
     }
-    
-     
+
 }
