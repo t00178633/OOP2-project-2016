@@ -33,9 +33,10 @@ public class Project extends JFrame implements ActionListener
         
 		setTitle("Garage Repairs");
 		setSize(300,500);
+		setLocation(700,200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-	    mainbackground = getmainbackground();
+	    mainbackground = getContentPane();
         mainbackground.setBackground (Color.gray);
         mainbackground.setLayout(null);
         
@@ -53,47 +54,110 @@ public class Project extends JFrame implements ActionListener
         menuTop.add(Exit);
         
         opening = new JLabel("Hello, Welcome to Garage Repairs.");
-        opening.setSize(250, 50); 
+        opening.setSize(250, 55); 
         mainbackground.add(opening);
         
-        opening = new JLabel("Hello" );
-        opening.setSize(250, 50);
-        mainbackground.add(opening);
+       
 	}
 	
-	 public void actionPerformed(ActionEvent event) {
+	
+	    public void createCustomers() {
+        JMenuItem addCustomer,removeCustomer,viewCustomer, updateCustomer;
+        
+        Customers = new JMenu("Customers");
+       
+        addCustomer = new JMenuItem("Add New Customer");   
+        addCustomer.addActionListener( this );
+        Customers.add(addCustomer);
+
+        removeCustomer = new JMenuItem("Remove Customer");  
+        removeCustomer.addActionListener( this );
+        Customers.add(removeCustomer);
+        
+        updateCustomer = new JMenuItem("Update Customer");
+        updateCustomer.addActionListener( this );
+        Customers.add(updateCustomer);
+        
+        viewCustomer = new JMenuItem("View Customer");
+        viewCustomer.addActionListener( this );
+        Customers.add(viewCustomer);
+        
+        
+    }
+    
+     public void createParts() {
+        JMenuItem addParts, removeParts, ViewParts, updateParts;
+        
+        Parts = new JMenu("Parts");
+       
+        addParts = new JMenuItem("Add New Part");   
+        addParts.addActionListener( this );
+        Parts.add(addParts);
+
+        removeParts = new JMenuItem("Remove Part");   
+        removeParts.addActionListener( this );
+        Parts.add(removeParts);
+        
+        updateParts = new JMenuItem("Update Part");      
+        updateParts.addActionListener( this );
+        Parts.add(updateParts);
+        
+        ViewParts = new JMenuItem("View Part");   
+        ViewParts.addActionListener( this );
+        Parts.add(ViewParts);
+
+      
+    }
+    
+    public void createRepairs() {
+        JMenuItem LogRepairs, ViewRepairs;
+        
+        Repairs = new JMenu("Repairs");
+       
+        LogRepairs = new JMenuItem("Log New Repair");   
+        LogRepairs.addActionListener( this );
+        Repairs.add(LogRepairs);
+
+        ViewRepairs = new JMenuItem("View Current Repairs");   
+        ViewRepairs.addActionListener( this );
+        Repairs.add(ViewRepairs);
+
+ 
+    }
+    
+    public void createExit() 
+    {
+     Exit = new JMenu("Exit");
+     JMenuItem exit = new JMenuItem("Exit System");
+     exit.addActionListener( this );
+     Exit.add(exit);
+     //setDefaultCloseOperation(EXIT_ON_CLOSE);
+    
+    }
+    
+    public void actionPerformed(ActionEvent event) {
         String  menu;
         JLabel opening;
         menu = event.getActionCommand();
-        if (menu.equals("Exit")) {
+        
+        if (menu.equals ("Customers"))
+        {
+           createCustomers();
+        }
+        
+         else if (menu.equals ("Parts"))
+        {
+           createParts();
+        }
+        
+        else if (menu.equals ("Repairs"))
+        {
+           createRepairs();  
+        }
+        
+       else if (menu.equals("Exit")) 
+        {
            System.exit(0);
-        }
-        
-        else {
-        	 opening.setText( menu );
-        }
-        }
-	
-	    public void createCustomers() {
-        JMenuItem Customer;
-        
-        Customer = new JMenu("Customers");
-       
-        Customer = new JMenuItem("Add New Customer");   
-        Customer.addActionListener( this );
-        Customer.add(Customer);
-
-        Customer = new JMenuItem("Remove Customer");  
-        Customer.addActionListener( this );
-        Customer.add(Customer);
-
-        Customer = new JMenuItem("View All Customers");
-        Customer.addActionListener( this );
-        Customer.add(Customer);
-
-        Customer = new JMenuItem("Exit");      
-        Customer.addActionListener( this );
-        Customer.add(Customer);
+        } 
     }
-
 }
