@@ -17,6 +17,7 @@ public class Project extends JFrame implements ActionListener
 	JMenu Parts;
 	JMenu Repairs;
 	JMenu Exit;
+	ArrayList <Customer> customers;
 	
 	public static void main (String args []) 
 	{
@@ -24,6 +25,10 @@ public class Project extends JFrame implements ActionListener
 		mainmenu.setVisible(true);
 		
 	}
+	
+	 public void AddCustomer() {
+      	customers = new ArrayList<Customer>();
+        }
 	
 	public Project()
 	{ 
@@ -62,13 +67,13 @@ public class Project extends JFrame implements ActionListener
 	
 	
 	    public void createCustomers() {
-        JMenuItem addCustomer,removeCustomer,viewCustomer, updateCustomer;
+        JMenuItem AddCustomer,removeCustomer,viewCustomer, updateCustomer;
         
         Customers = new JMenu("Customers");
        
-        addCustomer = new JMenuItem("Add New Customer");   
-        addCustomer.addActionListener( this );
-        Customers.add(addCustomer);
+        AddCustomer = new JMenuItem("Add New Customer");   
+        AddCustomer.addActionListener( this );
+        Customers.add(AddCustomer);
 
         removeCustomer = new JMenuItem("Remove Customer");  
         removeCustomer.addActionListener( this );
@@ -135,27 +140,28 @@ public class Project extends JFrame implements ActionListener
     
     }
     
+    
     public void actionPerformed(ActionEvent event) {
-        String  menu;
+        String  menuitem;
         JLabel opening;
-        menu = event.getActionCommand();
+        menuitem = event.getActionCommand();
         
-        if (menu.equals ("Customers"))
+        if (menuitem.equals ("Add Customer"))
         {
-           createCustomers();
+           CustomerGUI.AddCustomer(customers);
         }
         
-         else if (menu.equals ("Parts"))
+         else if (menuitem.equals ("Parts"))
         {
            createParts();
         }
         
-        else if (menu.equals ("Repairs"))
+        else if (menuitem.equals ("Repairs"))
         {
            createRepairs();  
         }
         
-       else if (menu.equals("Exit")) 
+       else if (menuitem.equals("Exit System")) 
         {
            System.exit(0);
         } 
