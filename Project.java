@@ -17,7 +17,8 @@ public class Project extends JFrame implements ActionListener
 	JMenu Parts;
 	JMenu Repairs;
 	JMenu Exit;
-	ArrayList <Customer> customers;
+	static ArrayList <Customer> customers= new ArrayList<Customer>();
+	static ArrayList <Part> part = new ArrayList<Part>();
 	
 	public static void main (String args []) 
 	{
@@ -25,10 +26,6 @@ public class Project extends JFrame implements ActionListener
 		mainmenu.setVisible(true);
 		
 	}
-	
-	 public void AddCustomer() {
-      	customers = new ArrayList<Customer>();
-        }
 	
 	public Project()
 	{ 
@@ -67,7 +64,7 @@ public class Project extends JFrame implements ActionListener
 	
 	
 	    public void createCustomers() {
-        JMenuItem AddCustomer,removeCustomer,viewCustomer, updateCustomer;
+        JMenuItem AddCustomer,removeCustomer,viewCustomer, updateCustomer, saveCustomer, openCustomer;
         
         Customers = new JMenu("Customers");
        
@@ -86,6 +83,14 @@ public class Project extends JFrame implements ActionListener
         viewCustomer = new JMenuItem("View Customer");
         viewCustomer.addActionListener( this );
         Customers.add(viewCustomer);
+        
+        openCustomer = new JMenuItem("Open");
+        openCustomer.addActionListener(this);
+        Customers.add(openCustomer);
+
+        saveCustomer = new JMenuItem("Save");
+        saveCustomer.addActionListener(this);
+        Customers.add(saveCustomer);
         
         
     }
@@ -136,34 +141,69 @@ public class Project extends JFrame implements ActionListener
      JMenuItem exit = new JMenuItem("Exit System");
      exit.addActionListener( this );
      Exit.add(exit);
-     //setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     }
-    
     
     public void actionPerformed(ActionEvent event) {
         String  menuitem;
         JLabel opening;
         menuitem = event.getActionCommand();
         
-        if (menuitem.equals ("Add Customer"))
+        if (menuitem.equals ("Add New Customer"))
         {
-           CustomerGUI.AddCustomer(customers);
+           CustomerGUI gui=new CustomerGUI();
+ 			gui.setVisible(true);
+        }
+       
+        else if (menuitem.equals ("View Customer"))
+        {
+           ViewCustomer gui=new ViewCustomer();
+ 			gui.setVisible(true);
+        }
+        
+       else if (menuitem.equals ("Remove Customer"))
+        {
+           DeleteCustomer gui=new DeleteCustomer();
+ 			gui.setVisible(true);
+        }
+        
+        else if (menuitem.equals ("Update Customer"))
+        {
+           UpdateCustomer gui=new UpdateCustomer();
+ 			gui.setVisible(true);
         }
         
          else if (menuitem.equals ("Parts"))
         {
            createParts();
         }
+         else if (menuitem.equals ("Add New Part"))
+        {
+           AddPart gui=new AddPart();
+ 			gui.setVisible(true);
+        }
+        
+         else if (menuitem.equals ("Remove Part"))
+        {
+           RemovePart gui=new RemovePart();
+ 			gui.setVisible(true);
+        }
+        
+        else if (menuitem.equals ("Update Part"))
+        {
+           UpdatePart gui=new UpdatePart();
+ 			gui.setVisible(true);
+        }
+        
+        else if (menuitem.equals ("View Part"))
+        {
+        	ViewPart gui=new ViewPart();
+ 			gui.setVisible(true);
+        }
         
         else if (menuitem.equals ("Repairs"))
         {
            createRepairs();  
-        }
-        
-       else if (menuitem.equals("Exit System")) 
-        {
-           System.exit(0);
-        } 
-    }
+        }  
+}
 }
