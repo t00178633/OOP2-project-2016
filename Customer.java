@@ -83,18 +83,6 @@ public class Customer {
 	}
 
       
-   //   public void displaycustomer(){
-     // 	JTextArea area = new JTextArea();
-      	//int numCustomers = customers.size();
-      	//if (numCustomers>0) {
-      	 // area.setText("Customer List:");
-      	 // for (int i = 0; i<numCustomers; i++) 
-      	  //  area.append("Cust ID no: " + i + " " + customers.get(i).toString()+"\n");
-      	 // showMessage(area);
-      //	}
-      //	else
-      	//    showMessage("No Customers in the system");
-     // }
      public static void main(String[] args)
      {
      	new Customer();
