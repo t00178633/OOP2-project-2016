@@ -27,6 +27,10 @@ public class Project extends JFrame implements ActionListener
 		
 	}
 	
+	// public void AddCustomer() {
+    //  	customers = new ArrayList<Customer>();
+    //    }
+	
 	public Project()
 	{ 
 		
@@ -141,8 +145,30 @@ public class Project extends JFrame implements ActionListener
      JMenuItem exit = new JMenuItem("Exit System");
      exit.addActionListener( this );
      Exit.add(exit);
+     //setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     }
+    
+    public void save() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("customers.dat"));
+        oos.writeObject(customers);
+        oos.close();
+
+    }
+    
+    public void open() {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("customers.dat"));
+            customers = (ArrayList<Customer>) ois.readObject();
+            ois.close();
+
+            JOptionPane.showMessageDialog(null,"File is Opening","Open",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"File not found","Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    
     
     public void actionPerformed(ActionEvent event) {
         String  menuitem;
@@ -204,6 +230,27 @@ public class Project extends JFrame implements ActionListener
         else if (menuitem.equals ("Repairs"))
         {
            createRepairs();  
-        }  
+        }
+        
+        else if(menuitem.equals ("Open")) 
+        {
+            open();
+        }
+        
+         else if(menuitem.equals ("Save")) {
+              try{
+              
+                save();
+                JOptionPane.showMessageDialog(null,"Data saved successfully","Saved",JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                JOptionPane.showMessageDialog(null,"Not able to save the file");
+                e1.printStackTrace();
+            }
+         }
+      else if (menuitem.equals("Exit System")) 
+        {
+           System.exit(0);
+        } 
+   
 }
 }
