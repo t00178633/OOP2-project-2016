@@ -8,8 +8,8 @@ import java.io.*;
 public class ViewPart extends JFrame implements ActionListener{
 
   private JPanel part;
-  private JTextField partnamefield, partdetailsfield, partquantityfield;
-  private JLabel partname, partdetails, partquantity;
+  private JTextField partnamefield, partdetailsfield;
+  private JLabel partname, partdetails;
   private JButton view; 
   	
   	public ViewPart()
@@ -37,6 +37,9 @@ public class ViewPart extends JFrame implements ActionListener{
  	    add(partnamefield);
  	    partnamefield.setLocation(110,210);
  
+        JLabel blankLabel1 = new JLabel("                                             ");
+        pane.add(blankLabel1);
+ 
    
    	    partdetails = new JLabel("Enter Part Details:");
  	    partdetails.setSize(300,100);
@@ -49,17 +52,6 @@ public class ViewPart extends JFrame implements ActionListener{
  	    add(partdetailsfield);
  	    partdetailsfield.setLocation(110,40);
       
-        partquantity = new JLabel("Enter Parts Quantity:");
- 	    partquantity.setSize(30,10);
- 	    partquantity.setLocation(10,10);
- 	    pane.add(partquantity);
- 	
- 	    partquantityfield = new JTextField();
- 	    partquantityfield.setColumns(15);
- 	    partquantityfield.setSize(150,60);
- 	    add(partquantityfield);
- 	    partquantityfield.setLocation(110,70);
-    
     
         view = new JButton("View");
         view.setSize(95,40);
@@ -84,18 +76,27 @@ public class ViewPart extends JFrame implements ActionListener{
         {
         String partname= partnamefield.getText();
    		String partdetails= partdetailsfield.getText();
-   		ArrayList <Part> part = Project.part;	
+   		ArrayList <Part> part = Project.part;
+   	
+   		boolean found=false;	
    		
-   		JOptionPane.showMessageDialog(null,part);
-   		for(int i=0;i<part.size();i++)
+   			for(int i=0;i<part.size();i++)
    		{
    			Part aPart = part.get(i);
    			if(partname.equals(aPart.getPartname()) && partdetails.equals(aPart.getPartdetails()))
    			{
-   				JOptionPane.showMessageDialog(null,part);
+   				found=true;
+   				JOptionPane.showMessageDialog(null,aPart);
+   				break;
    			}
    		
    		}
+   		
+   		if(!found)
+   			JOptionPane.showMessageDialog(null,"This Part has not been registered!!");
+   		
+        }
+   		
    		
         }
         
@@ -103,5 +104,4 @@ public class ViewPart extends JFrame implements ActionListener{
     }
 
     
-    
-}
+   
