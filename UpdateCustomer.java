@@ -93,9 +93,23 @@ public void actionPerformed(ActionEvent event) {
         {
         String forename= forenamefield.getText();
    		String surname= surnamefield.getText();
-   		String address=addressfield.getText();
+   	    String address = addressfield.getText();
 		double telephone=Double.parseDouble(telephonefield.getText());
+		ArrayList <Customer> customers = Project.customers;
+		boolean found=false;
 		
+			for(int i=0;i<customers.size();i++)
+   		{
+			Customer aCustomer = customers.get(i);
+   			if(forename.equals(aCustomer.getForename()) && surname.equals(aCustomer.getSurname()))
+   			{
+   				found=true;
+   				
+   				Project.customers.remove(aCustomer);
+	
+   			}
+   		
+   		}
 		
 		Customer cust= new Customer(forename,surname, address, telephone);
 		Project.customers.add(cust);
