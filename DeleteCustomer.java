@@ -72,16 +72,16 @@ public class DeleteCustomer extends JFrame implements ActionListener{
  	    addressfield.setLocation(110,70);
     
     
-        telephone = new JLabel("Enter Customer's Telephone:");
+        /*telephone = new JLabel("Enter Customer's Telephone:");
  	    telephone.setSize(30,10);
  	    telephone.setLocation(10,10);
- 		pane.add(telephone);
+ 		pane.add(telephone);*/
  		
- 	    telephonefield = new JTextField();
+ 	   /* telephonefield = new JTextField();
  	    telephonefield.setColumns(15);
  	    telephonefield.setSize(150,80);
  	    add(telephonefield);
- 	    telephonefield.setLocation(110,140);
+ 	    telephonefield.setLocation(110,140);*/
     
         delete = new JButton("Delete");
         delete.setSize(95,40);
@@ -104,13 +104,37 @@ public void actionPerformed(ActionEvent event) {
         String forename= forenamefield.getText();
    		String surname= surnamefield.getText();
    		String address=addressfield.getText();
-		double telephone=Double.parseDouble(telephonefield.getText());
+		//double telephone=Double.parseDouble(telephonefield.getText());
+		ArrayList <Customer> customers = Project.customers;
+		boolean found=false;
+		
+		//Customer cust= new Customer(forename,surname, address, telephone);
 		
 		
-		Customer cust= new Customer(forename,surname, address, telephone);
-		Project.customers.remove(cust);
-		JOptionPane.showMessageDialog(null,"Customer has been Deleted");
+		
+		for(int i=0;i<customers.size();i++)
+   		{
+   			Customer aCustomer = customers.get(i);
+   			if(forename.equals(aCustomer.getForename()) && surname.equals(aCustomer.getSurname()) && address.equals(aCustomer.getAddress()))
+   			{
+   				found=true;
+   				JOptionPane.showMessageDialog(null,"Customer found in database .... now removing customer!!");
+   				Project.customers.remove(aCustomer);
+		        JOptionPane.showMessageDialog(null,"Customer has been Deleted");
+   				break;
+   			}
+   		
+   		}
+   		
+   		if(!found)
+   			JOptionPane.showMessageDialog(null,"This customer has not been registered!!");
+   		
         }
+		
+		
+		
+		
+        
         
         
     }
