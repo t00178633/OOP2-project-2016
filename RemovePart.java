@@ -37,6 +37,8 @@ public class RemovePart extends JFrame implements ActionListener{
  	    add(partnamefield);
  	    partnamefield.setLocation(110,210);
  
+        JLabel blankLabel1 = new JLabel("                                             ");
+        pane.add(blankLabel1);
    
    	    partdetails = new JLabel("Enter Part Details:");
  	    partdetails.setSize(300,100);
@@ -48,6 +50,9 @@ public class RemovePart extends JFrame implements ActionListener{
  	    partdetailsfield.setSize(150,40);
  	    add(partdetailsfield);
  	    partdetailsfield.setLocation(110,40);
+    
+       JLabel blankLabel2 = new JLabel("                                             ");
+        pane.add(blankLabel2);
     
         partquantity = new JLabel("Enter Part Quantity:");
  	    partquantity.setSize(30,10);
