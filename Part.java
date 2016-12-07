@@ -16,9 +16,9 @@ public class Part {
 
       
 	public  Part( String partname,String partdeails, double partquantity ){
-		partname = "";
-		partdeails = "";
-		partquantity = partquantity;
+		this.partname =  partname;
+		this.partdetails = partdetails ;
+		this.partquantity = partquantity;
 	}
 	
 	public  Part( String partname ){
