@@ -39,7 +39,9 @@ public class UpdatePart extends JFrame implements ActionListener{
  	    add(partnamefield);
  	    partnamefield.setLocation(110,210);
  
-   
+        JLabel blankLabel1 = new JLabel("                                             ");
+        pane.add(blankLabel1);
+   	    
    	    partdetails = new JLabel("Enter Part Details:");
  	    partdetails.setSize(300,100);
  	    partdetails.setLocation(20,110);
@@ -51,6 +53,9 @@ public class UpdatePart extends JFrame implements ActionListener{
  	    add(partdetailsfield);
  	    partdetailsfield.setLocation(110,40);
       
+       JLabel blankLabel2 = new JLabel("                                             ");
+        pane.add(blankLabel2);
+        
         partquantity = new JLabel("Enter Parts Quantity:");
  	    partquantity.setSize(30,10);
  	    partquantity.setLocation(10,10);
