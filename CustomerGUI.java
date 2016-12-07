@@ -1,11 +1,23 @@
+/**
+
+ * This is the main class for adding a Customer
+
+ * @author Liam McGovern
+
+ * @version 1.0
+
+ */
+ 
+ //import statments needed to use to save the file, use JOption to display a message box, display textbox
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
 import java.util.*;
 import java.io.*;
-
+//declaring the name of the file and "extends JFrame implements ActionListener" needed or the various buttons won't work
 public class CustomerGUI extends JFrame implements ActionListener{
+//attributes
   private JPanel customer;
   private JTextField forenamefield, surnamefield, addressfield, telephonefield;
   private JLabel forename,surname,address,telephone;
@@ -15,16 +27,16 @@ public class CustomerGUI extends JFrame implements ActionListener{
    
     
    public CustomerGUI()
-   {    
-        
+   {   //Constructor 
+       //This sets the title of the GUI name, size and location on the screen 
  		setTitle("Customer Details");
  		setSize(500,300);
  		setLocation(500,300);
- 		
+ 		//When the JFrame closes ".HIDE_ON_CLOSE" will get rid of the JFrame but will not close the program
  		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
  		
  
-
+        //From here the container background, layout size and location is set for the JLabels and TextFields
     	Container pane= getContentPane();
     	pane.setBackground(Color.gray);
  		setLayout(new FlowLayout());
@@ -85,7 +97,7 @@ public class CustomerGUI extends JFrame implements ActionListener{
    
     	
     }
-
+//event handler action performed = when a button is pressed what will happen
 public void actionPerformed(ActionEvent event) {
         
         
@@ -104,6 +116,6 @@ public void actionPerformed(ActionEvent event) {
         }
         
         
-    }
+    }//end of event handler
  	 
 }
