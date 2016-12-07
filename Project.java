@@ -19,6 +19,7 @@ public class Project extends JFrame implements ActionListener
 	JMenu Exit;
 	static ArrayList <Customer> customers= new ArrayList<Customer>();
 	static ArrayList <Part> part = new ArrayList<Part>();
+	static ArrayList <Repair> repair = new ArrayList<Repair>();
 	
 	public static void main (String args []) 
 	{
@@ -153,6 +154,14 @@ public class Project extends JFrame implements ActionListener
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("customers.dat"));
         oos.writeObject(customers);
         oos.close();
+        
+        ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream("part.dat"));
+        oos1.writeObject(customers);
+        oos1.close();
+        
+        ObjectOutputStream oos2 = new ObjectOutputStream(new FileOutputStream("repair.dat"));
+        oos2.writeObject(customers);
+        oos2.close();
 
     }
     
@@ -161,6 +170,14 @@ public class Project extends JFrame implements ActionListener
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("customers.dat"));
             customers = (ArrayList<Customer>) ois.readObject();
             ois.close();
+            
+            ObjectInputStream ois1 = new ObjectInputStream(new FileInputStream("part.dat"));
+            customers = (ArrayList<Customer>) ois1.readObject();
+            ois1.close();
+            
+            ObjectInputStream ois2 = new ObjectInputStream(new FileInputStream("repair.dat"));
+            customers = (ArrayList<Customer>) ois2.readObject();
+            ois2.close();
 
             JOptionPane.showMessageDialog(null,"File is Opening","Open",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
@@ -230,6 +247,18 @@ public class Project extends JFrame implements ActionListener
         else if (menuitem.equals ("Repairs"))
         {
            createRepairs();  
+        }
+        
+         else if (menuitem.equals ("Log New Repair"))
+        {
+        	LogNewRepair gui=new LogNewRepair();
+ 			gui.setVisible(true);
+        }
+        
+        else if (menuitem.equals ("View Current Repairs"))
+        {
+        	ViewCurrentRepair gui=new ViewCurrentRepair();
+ 			gui.setVisible(true);
         }
         
         else if(menuitem.equals ("Open")) 
