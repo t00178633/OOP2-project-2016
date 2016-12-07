@@ -83,18 +83,32 @@ public class ViewCustomer extends JFrame implements ActionListener{
         String forename= forenamefield.getText();
    		String surname= surnamefield.getText();
    		String address=addressfield.getText();
-   		ArrayList <Customer> customers = Project.customers;	
+   		ArrayList <Customer> customers = Project.customers;
+   		boolean found=false;
    		
-   		JOptionPane.showMessageDialog(null,customers);
+   		//Customer cust1 = new Customer("Liam","McGovern","Tralee",123);
+   		//Customer cust2 = new Customer("John","Brosnan","Ardfert",234);
+   		
+   		//customers.add(cust1);
+   		//customers.add(cust2);
+   		
+   		
+   		//JOptionPane.showMessageDialog(null,customers.get(0));
+   		
    		for(int i=0;i<customers.size();i++)
    		{
    			Customer aCustomer = customers.get(i);
    			if(forename.equals(aCustomer.getForename()) && surname.equals(aCustomer.getSurname()) && address.equals(aCustomer.getAddress()))
    			{
-   				JOptionPane.showMessageDialog(null,customers);
+   				found=true;
+   				JOptionPane.showMessageDialog(null,aCustomer);
+   				break;
    			}
    		
    		}
+   		
+   		if(!found)
+   			JOptionPane.showMessageDialog(null,"This customer has not been registered!!");
    		
         }
         
